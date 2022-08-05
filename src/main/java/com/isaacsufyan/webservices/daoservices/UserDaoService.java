@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class UserDaoService {
     private static final List<User> USER_LIST = new ArrayList<>();
-    private static int count = 0;
+    private static int count;
 
     static {
         USER_LIST.add(new User(1, "Sufyan", new Date()));

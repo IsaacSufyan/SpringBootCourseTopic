@@ -21,10 +21,10 @@ class PersonVersioningController {
 
 
 //    http://localhost:8080/person/param?version=1
-//    @GetMapping(value = ["/person/param"], params = ["version=1"])
-//    fun personParamV1(): PersonV1 {
-//        return PersonV1("Sufyan")
-//    }
+    @GetMapping(value = ["/person/param"], params = ["version=1"])
+    fun personParamV1(): PersonV1 {
+        return PersonV1("Sufyan")
+    }
 //
 //    @GetMapping(value = ["/person/param"], params = ["version=2"])
 //    fun personParamV2(): PersonV2 {
@@ -34,10 +34,10 @@ class PersonVersioningController {
 //    http://localhost:8080/person/header
 //    Key = X-API-VERSION   and Value =1
 
-//    @GetMapping(value = ["/person/header"], headers = ["X-API-VERSION=1"])
-//    fun peronHeaderV1(): PersonV1 {
-//        return PersonV1("Sufyan")
-//    }
+    @GetMapping(value = ["/person/header"], headers = ["X-API-VERSION=1"])
+    fun peronHeaderV1(): PersonV1 {
+        return PersonV1("Sufyan")
+    }
 //
 //    @GetMapping(value = ["/person/header"], headers = ["X-API-VERSION=2"])
 //    fun personHeaderV2(): PersonV2 {

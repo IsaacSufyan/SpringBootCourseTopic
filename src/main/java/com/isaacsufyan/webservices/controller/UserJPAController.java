@@ -33,7 +33,7 @@ public class UserJPAController {
         this.postRepository = userRepository;
     }
 
-    @GetMapping("/jpa/users")
+    @GetMapping(path = "/jpa/users", produces = {"application/xml"})
     public List<User> retrieveAllUsers() {
         return userRepository.findAll();
     }
@@ -50,7 +50,7 @@ public class UserJPAController {
 //        return model;
 //    }
 
-    @GetMapping("/jpa/users/{id}")
+    @GetMapping(path = "/jpa/users/{id}")
     public Optional<User> retrieveUser(@PathVariable Integer id) {
         Optional<User> users = userRepository.findById(id);
         if (users.isEmpty()) {
@@ -59,7 +59,7 @@ public class UserJPAController {
         return users;
     }
 
-    @PostMapping("/jpa/users")
+    @PostMapping(path = "/jpa/users", consumes = {"application/json"})
     public WebServiceResponse<User> createUser(@Valid @RequestBody User user) {
         if(user.getBirthDate()==null){
             user.setBirthDate(new Date());
@@ -100,7 +100,7 @@ public class UserJPAController {
 //        List<Post> postList = users.get().getPosts();
 //        Stream<Post> postStream = postList.stream().filter(post -> Objects.equals(post.getId(), post_id));
 //        return postStream.findFirst();
-        Post post = postRepository.getPostDetailsOfSpecificUser(user_id, post_id);
+        Post post = postRepository.getPostByIdAndUser_Id(user_id, post_id);
         if (post==null){
             throw new UserNotFoundException("User Id: "+user_id+ " or Post Id: "+post_id+" is incorrect");
         }
